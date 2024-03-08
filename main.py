@@ -1,6 +1,27 @@
 from character import classes
-import systems.story
+from random import randint
+from systems import story
+
 Hero = None
+
+
+# Проверка на смерть
+def is_dead():
+    print('Вы умерли смертью храбрых...')
+    Hero.hp = 0
+
+
+# Случайное событие
+
+def random_event():
+    variable = randint(1, 40)
+    if Hero.hp - variable <= 0:
+        is_dead()
+    else:
+        print(f' \n Вы упали и подвернули ногу, {Hero.name}"у больно! У вас отнимается {variable} здоровья')
+        Hero.hp -= variable
+    print(f' \n Ваше здоровье - {Hero.hp}')
+    return Hero.hp
 
 
 # Удобный импорт из character.classes классов для персонажа
@@ -39,6 +60,6 @@ while True:
             print(
                 f'\n Имя - {Hero.name} \n Возраст - {Hero.age} \n Оружие - {Hero.weapon} \n Класс - {Hero.spec_name} \n --------------------- \n Здоровье - {Hero.hp} \n Броня - {Hero.armor} \n Скорость - {Hero.speed} \n Урон - {Hero.damage} \n ')
         case 3:
-            systems.story.random_event()
+            random_event()
         case 9:
             break
