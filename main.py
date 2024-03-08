@@ -1,8 +1,9 @@
-import classes
-
+from character import classes
+import systems.story
 Hero = None
 
 
+# Удобный импорт из character.classes классов для персонажа
 def hero(chos_hero=None):
     name_hero = input('Имя вашего персонажа: ')
     age_hero = int(input('Возраст вашего персонажа: '))
@@ -11,7 +12,7 @@ def hero(chos_hero=None):
 
 while True:
     print(' Добро пожаловать в меню создания перосонажа! \n', 'Что вы хотите сделать?\n')
-    print(' 1 - Создать персонажа \n', '2 - О персонаже \n', '3 - Редактор класса \n',
+    print(' 1 - Создать персонажа \n', '2 - О персонаже \n', '3 - Махаться \n',
           '4 - Узнать информацию о персонаже \n', '9 - Выход \n')
 
     chose = int(input('Выберите действие: '))
@@ -37,5 +38,7 @@ while True:
         case 2:
             print(
                 f'\n Имя - {Hero.name} \n Возраст - {Hero.age} \n Оружие - {Hero.weapon} \n Класс - {Hero.spec_name} \n --------------------- \n Здоровье - {Hero.hp} \n Броня - {Hero.armor} \n Скорость - {Hero.speed} \n Урон - {Hero.damage} \n ')
+        case 3:
+            systems.story.random_event()
         case 9:
             break
