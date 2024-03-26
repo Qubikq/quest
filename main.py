@@ -1,6 +1,8 @@
 from character import classes
 from random import randint
-from systems import story
+from systems import battle
+from enemy import enemys
+import copy
 
 Hero = None
 
@@ -60,6 +62,6 @@ while True:
             print(
                 f'\n Имя - {Hero.name} \n Возраст - {Hero.age} \n Оружие - {Hero.weapon} \n Класс - {Hero.spec_name} \n --------------------- \n Здоровье - {Hero.hp} \n Броня - {Hero.armor} \n Скорость - {Hero.speed} \n Урон - {Hero.damage} \n ')
         case 3:
-            random_event()
+            battle.battle_enemy(Hero, copy.copy(enemys.Goblins[randint(0, 2)]))
         case 9:
             break
