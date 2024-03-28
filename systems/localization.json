@@ -2,7 +2,7 @@
   "battle": {
     "fight_start": {
       "en": "@player_name@ вступает в бой с @enemy_name@",
-      "ru": "@player_name@ вступает в бой с @enemy_name@"
+      "ru": "@player_name@ goes into battle with @enemy_name@"
     },
     "player_attack_success": {
       "en": "@player_name@ попадает и наносит @player_damage@ урона",

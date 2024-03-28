@@ -1,4 +1,3 @@
-import copy
 import json
 import re
 
@@ -13,13 +12,13 @@ class filter_sort:
         text = f'{localization[self][param][language]}'
         count = 0
 
-        if args:
-            def replace_number(match):
-                nonlocal count
-                text_out = str(args[count])
-                count += 1
-                return text_out
+        def replace_number(match):
+            nonlocal count
+            text_out = str(args[count])
+            count += 1
+            return text_out
 
+        if args:
             pattern = r"@[\w\s]*@"
             reformate_text = re.sub(pattern, replace_number, text)
             return reformate_text
