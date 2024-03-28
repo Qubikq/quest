@@ -1,0 +1,40 @@
+{
+  "battle": {
+    "fight_start": {
+      "en": "@player_name@ вступает в бой с @enemy_name@",
+      "ru": "@player_name@ вступает в бой с @enemy_name@"
+    },
+    "player_attack_success": {
+      "en": "@player_name@ попадает и наносит @player_damage@ урона",
+      "ru": "@player_name@ попадает и наносит @player_damage@ урона"
+    },
+    "player_attack_fail": {
+      "en": "@player_name@ не попадает по противнику",
+      "ru": "@player_name@ не попадает по противнику"
+    },
+    "enemy_attack_success": {
+      "en": "@enemy_name@ наносит вам @enemy_damage@",
+      "ru": "@enemy_name@ наносит вам @enemy_damage@"
+    },
+    "enemy_attack_fail": {
+      "en": "~Ваша броня сдерживает удар~",
+      "ru": "~Ваша броня сдерживает удар~"
+    },
+    "player_hp_remain": {
+      "en": "У @player_name@ осталось @player_hp@ здоровья",
+      "ru": "У @player_name@ осталось @player_hp@ здоровья"
+    },
+    "enemy_hp_remain": {
+      "en": "У @enemy_name@ осталось @enemy_hp@ здоровья",
+      "ru": "У @enemy_name@ осталось @enemy_hp@ здоровья"
+    },
+    "player_dead": {
+      "en": "@player_name@ ПОГИБ",
+      "ru": "@player_name@ ПОГИБ"
+    },
+    "enemy_dead": {
+      "en": "@player_name@ ПОГИБ",
+      "ru": "@player_name@ ПОГИБ"
+    }
+  }
+}

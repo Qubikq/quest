@@ -13,8 +13,8 @@ class MainCharacter:
         self.inventory = inventory
         self.weapon = weapon_type
         self.spec_name = spec_name
-        self.hp = hp
-        self.armor = armor
+        self.hp = hp + strength * 2
+        self.armor = armor + agility
         self.speed = speed
         self.damage = damage
         self.skill1 = skill1
@@ -25,22 +25,22 @@ class MainCharacter:
 
 class Warrior(MainCharacter):
 
-    def __init__(self, name, age, level=1, strength=5, agility=3, intelligence=1, inventory=10, weapon_type=weapon_bd.weapon_types[0].name, spec_name='Воин', hp=50,
-                 armor=5, speed=10, damage=weapon_bd.weapon_types[0].damage):
+    def __init__(self, name, age, level=1, strength=5, agility=3, intelligence=1, inventory=10, weapon_type=weapon_bd.weapon_types[0].name, spec_name='Воин', hp=10,
+                 armor=0, speed=10, damage=weapon_bd.weapon_types[0].damage):
         super().__init__(name, age, level, strength, agility, intelligence, inventory, weapon_type, spec_name, hp, armor, speed, damage)
 
 
 class Mage(MainCharacter):
 
-    def __init__(self, name, age, level=1, strength=2, agility=2, intelligence=5, inventory=10, weapon_type=weapon_bd.mage_weapon_types[0].name, spec_name='Маг', hp=30,
-                 armor=2, speed=15, damage=weapon_bd.mage_weapon_types[0].damage):
+    def __init__(self, name, age, level=1, strength=2, agility=2, intelligence=5, inventory=10, weapon_type=weapon_bd.mage_weapon_types[0].name, spec_name='Маг', hp=10,
+                 armor=0, speed=15, damage=weapon_bd.mage_weapon_types[0].damage):
         super().__init__(name, age, level, strength, agility, intelligence, inventory, weapon_type, spec_name, hp, armor, speed, damage)
 
 
 class Archer(MainCharacter):
 
     def __init__(self, name, age, level=1, strength=2, agility=5, intelligence=2, inventory=10, weapon_type=weapon_bd.archer_weapon_types[0].name, spec_name='Лучник',
-                 hp=35, armor=4, speed=23, damage=weapon_bd.archer_weapon_types[0].damage):
+                 hp=15, armor=0, speed=23, damage=weapon_bd.archer_weapon_types[0].damage):
         super().__init__(name, age, level, strength, agility, intelligence, inventory, weapon_type, spec_name, hp, armor, speed, damage)
 
 

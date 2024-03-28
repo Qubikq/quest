@@ -1,18 +1,26 @@
+from systems import locales
+
+language = 'ru'
+output = locales.output.referenece
+
+
 def battle_enemy(player, enemy, player_action=0):
-    print(f'{player.name} вступает в бой с {enemy.name} \n')
+    output('battle', 'fight_start', language, player.name, enemy.name)
     while True:
         if enemy.hp <= 0:
-            print(f'{enemy.name} - поражен!')
+            output('battle', 'enemy_dead', language, enemy.name)
             break
+        if player.hp <= 0:
+            output('battle', 'player_dead', language, player.name)
         if player_action == 1:
             current_damage = enemy.attack() - player.armor
             if current_damage <= 0:
-                print('~Ваша броння сдерживает удар~')
+                output('battle', 'enemy_attack_fail', language)
             else:
                 player.hp -= current_damage
-                print(f'{enemy.name} наносит вам {enemy.damage} \n У вас осталось {player.hp} здоровья')
-            print('\n ---------------------------------------------------------------------------------------------- \n')
+                output('battle', 'enemy_attack_success', language, enemy.name, enemy.damage)
             player_action = 0
+            output('battle', 'player_hp_remain', language, player.name, player.hp)
         print(f'1 - {player.skill1}')
         chose = int(input('Выберите действие - '))
         match chose:
@@ -20,13 +28,10 @@ def battle_enemy(player, enemy, player_action=0):
                 player_action = 1
                 player_damage = player.use_skill1() - enemy.armor
                 if player_damage <= 0:
-                    print('\n ---------------------------------------------------------------------------------------------- \n')
-                    print(f'Вы не попадаете по {enemy.name}')
+                    output('battle', 'player_attack_fail', language, player.name)
                 else:
                     enemy.hp -= player_damage
-                    print('\n ---------------------------------------------------------------------------------------------- \n')
-                    print(f'Вы нанесли {enemy.name} - {player_damage} урона!')
+                    output('battle', 'player_attack_success', language, player.name, player_damage)
                     if enemy.hp <= 0:
                         enemy.hp = 0
-                    print(f'У {enemy.name} осталось {enemy.hp} здоровья')
-                print('\n ---------------------------------------------------------------------------------------------- \n')
+                    output('battle', 'enemy_hp_remain', language, enemy.name, enemy.hp)
