@@ -1,58 +1,89 @@
 from weapon import weapon_bd
 from random import randint
+from systems import locales
+output = locales.localization
+output_s = locales.filter_sort.rename
+language = locales.language
 
 
 class MainCharacter:
-    def __init__(self, name, age, level, strength, agility, intelligence, inventory, weapon_type, spec_name, hp, armor, speed, damage, skill1='Простой удар'):
+    def __init__(self, name, weapon_type, spec_name, strength, agility, intelligence, damage, precision=10, level=1, expirience=0,
+                 inventory=10, hp=10, armor=0, initiation=5):
         self.name = name
-        self.age = age
+        self.weapon_type = weapon_type
+        self.spec_name = spec_name
         self.level = level
+        self.expirience = expirience
+        self.inventory = inventory
+        self.hp = hp + strength * 2
+        self.armor = armor + agility * 2
+        self.initiation = initiation + intelligence * 2
         self.strength = strength
         self.agility = agility
         self.intelligence = intelligence
-        self.inventory = inventory
-        self.weapon = weapon_type
-        self.spec_name = spec_name
-        self.hp = hp + strength * 2
-        self.armor = armor + agility
-        self.speed = speed
         self.damage = damage
-        self.skill1 = skill1
-
-    def use_skill1(self):
-        return randint(0, self.damage)
+        self.precision = precision
 
 
 class Warrior(MainCharacter):
 
-    def __init__(self, name, age, level=1, strength=5, agility=3, intelligence=1, inventory=10, weapon_type=weapon_bd.weapon_types[0].name, spec_name='Воин', hp=10,
-                 armor=0, speed=10, damage=weapon_bd.weapon_types[0].damage):
-        super().__init__(name, age, level, strength, agility, intelligence, inventory, weapon_type, spec_name, hp, armor, speed, damage)
+    def __init__(self, name, strength=5, agility=3, intelligence=2, weapon_type=weapon_bd.weapon_types[0].name,
+                 spec_name=output['specialization']['warrior'][language],
+                 damage=weapon_bd.weapon_types[0].damage,
+                 skill1=output_s('skills', 'warrior_skill_1', language, weapon_bd.weapon_types[0].name),
+                 skill2=output_s('skills', 'warrior_skill_2', language, weapon_bd.weapon_types[0].name)):
+        super().__init__(name, weapon_type, spec_name, strength, agility, intelligence, damage)
+        self.skill1 = skill1
+        self.skill2 = skill2
+
+    def use_skill1(self):
+        return randint(1, self.damage)
+
+    def use_skill2(self):
+        return self.damage + self.strength
 
 
 class Mage(MainCharacter):
 
-    def __init__(self, name, age, level=1, strength=2, agility=2, intelligence=5, inventory=10, weapon_type=weapon_bd.mage_weapon_types[0].name, spec_name='Маг', hp=10,
-                 armor=0, speed=15, damage=weapon_bd.mage_weapon_types[0].damage):
-        super().__init__(name, age, level, strength, agility, intelligence, inventory, weapon_type, spec_name, hp, armor, speed, damage)
+    def __init__(self, name, strength=5, agility=3, intelligence=2, weapon_type=weapon_bd.weapon_types[0].name,
+                 spec_name=output['specialization']['mage'][language], damage=weapon_bd.weapon_types[0].damage, skill1='Простой удар',
+                 skill2='Сильный удар'):
+        super().__init__(name, weapon_type, spec_name, strength, agility, intelligence, damage)
+        self.skill1 = skill1
+        self.skill2 = skill2
+
+    def use_skill1(self):
+        return randint(1, self.damage)
+
+    def use_skill2(self):
+        return self.damage + self.intelligence
 
 
 class Archer(MainCharacter):
 
-    def __init__(self, name, age, level=1, strength=2, agility=5, intelligence=2, inventory=10, weapon_type=weapon_bd.archer_weapon_types[0].name, spec_name='Лучник',
-                 hp=15, armor=0, speed=23, damage=weapon_bd.archer_weapon_types[0].damage):
-        super().__init__(name, age, level, strength, agility, intelligence, inventory, weapon_type, spec_name, hp, armor, speed, damage)
+    def __init__(self, name, strength=5, agility=3, intelligence=2, weapon_type=weapon_bd.weapon_types[0].name,
+                 spec_name=output['specialization']['archer'][language], damage=weapon_bd.weapon_types[0].damage, skill1='Простой удар',
+                 skill2='Сильный удар'):
+        super().__init__(name, weapon_type, spec_name, strength, agility, intelligence, damage)
+        self.skill1 = skill1
+        self.skill2 = skill2
+
+    def use_skill1(self):
+        return randint(1, self.damage)
+
+    def use_skill2(self):
+        return self.damage + self.intelligence
 
 
 class Heroes(Warrior, Mage, Archer):
     @staticmethod
-    def make_warrior(name, age):
-        return Warrior(name, age)
+    def make_warrior(name):
+        return Warrior(name)
 
     @staticmethod
-    def make_mage(name, age):
-        return Mage(name, age)
+    def make_mage(name):
+        return Mage(name)
 
     @staticmethod
-    def make_archer(name, age):
-        return Mage(name, age)
+    def make_archer(name):
+        return Mage(name)

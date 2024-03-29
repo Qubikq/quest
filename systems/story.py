@@ -1,4 +1,7 @@
-from random import randint
+from systems import locales
+
+output = locales.localization
+language = locales.language
 
 
 def story():

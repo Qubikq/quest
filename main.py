@@ -1,7 +1,8 @@
+from systems import battle
 from character import classes
 from random import randint
-from systems import battle
 from enemy import enemies
+
 import copy
 
 Hero = None
@@ -10,8 +11,7 @@ Hero = None
 # Удобный импорт из character.classes классов для персонажа
 def hero(chos_hero=None):
     name_hero = input('Имя вашего персонажа: ')
-    age_hero = int(input('Возраст вашего персонажа: '))
-    return getattr(classes.Heroes, chos_hero)(name=name_hero, age=age_hero)
+    return getattr(classes.Heroes, chos_hero)(name_hero)
 
 
 while True:

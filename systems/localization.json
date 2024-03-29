@@ -1,8 +1,32 @@
 {
+  "specialization": {
+    "warrior": {
+      "en": "Warrior",
+      "ru": "Воин"
+    },
+    "mage": {
+      "en": "Mage",
+      "ru": "Маг"
+    },
+    "archer": {
+      "en": "Archer",
+      "ru": "Лучник"
+    }
+  },
+  "skills": {
+    "warrior_skill_1": {
+      "en": "Hit by @weapon@",
+      "ru": "Удар @weapon@'ом"
+    },
+    "warrior_skill_2": {
+      "en": "Strong @weapon@ strike",
+      "ru": "Сильный удар @weapon@'ом"
+    }
+  },
   "battle": {
     "fight_start": {
-      "en": "@player_name@ вступает в бой с @enemy_name@",
-      "ru": "@player_name@ goes into battle with @enemy_name@"
+      "en": "@player_name@ goes into battle with @enemy_name@",
+      "ru": "@player_name@ вступает в бой с @enemy_name@"
     },
     "player_attack_success": {
       "en": "@player_name@ попадает и наносит @player_damage@ урона",
@@ -35,6 +59,44 @@
     "enemy_dead": {
       "en": "@player_name@ ПОГИБ",
       "ru": "@player_name@ ПОГИБ"
+    }
+  },
+  "weapon": {
+    "sword": {
+      "en": "Sword",
+      "ru": "Меч"
+    },
+    "axe": {
+      "en": "Axe",
+      "ru": "Топор"
+    },
+    "mace": {
+      "en": "Mace",
+      "ru": "Булава"
+    },
+    "staff": {
+      "en": "Staff",
+      "ru": "Посох"
+    },
+    "wand": {
+      "en": "Wand",
+      "ru": "Палочка"
+    },
+    "orb": {
+      "en": "Orb",
+      "ru": "Шар"
+    },
+    "bow": {
+      "en": "Bow",
+      "ru": "Лук"
+    },
+    "crossbow": {
+      "en": "Crossbow",
+      "ru": "Арбалет"
+    },
+    "longbow": {
+      "en": "Longbow",
+      "ru": "Длинный лук"
     }
   }
 }

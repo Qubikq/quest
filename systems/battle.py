@@ -1,6 +1,6 @@
 from systems import locales
 
-language = 'ru'
+language = locales.language
 output = locales.output.referenece
 
 
@@ -21,12 +21,23 @@ def battle_enemy(player, enemy, player_action=0):
                 output('battle', 'enemy_attack_success', language, enemy.name, enemy.damage)
             player_action = 0
             output('battle', 'player_hp_remain', language, player.name, player.hp)
-        print(f'1 - {player.skill1}')
+        print(f'1 - {player.skill1} \n 2 - {player.skill2}')
         chose = int(input('Выберите действие - '))
         match chose:
             case 1:
                 player_action = 1
                 player_damage = player.use_skill1() - enemy.armor
+                if player_damage <= 0:
+                    output('battle', 'player_attack_fail', language, player.name)
+                else:
+                    enemy.hp -= player_damage
+                    output('battle', 'player_attack_success', language, player.name, player_damage)
+                    if enemy.hp <= 0:
+                        enemy.hp = 0
+                    output('battle', 'enemy_hp_remain', language, enemy.name, enemy.hp)
+            case 2:
+                player_action = 1
+                player_damage = player.use_skill2() - enemy.armor
                 if player_damage <= 0:
                     output('battle', 'player_attack_fail', language, player.name)
                 else:
